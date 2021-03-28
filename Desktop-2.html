@@ -26,17 +26,20 @@
     <span class="desktop2-white_text">Нажмите на кнопку ниже прямо сейчас и наберите наш номер телефона. Прослушайте важную информацию!</span>
 
     <button class="button_green"><span class="button_text">Позвонить и прослушать</span></button>
-<div class="json_text"></div>
+
+<div class="json_text" style="width: 60%;"></div>
+
+
 
   <div class="footer_bottom-text-wrapper">
     <span class="footer_bottom-text">TERMENI SI CONDITII: ACESTA ESTE UN SERVICIU DE DIVERTISMENT. PRIN FOLOSIREA LUI DECLARATI CA AVETI 18 ANI IMPLINITI, </span>
   </div>
 </div>
 <script type="text/javascript">
-
+    let getJson = document.querySelector('.json_text');
     fetch('https://swapi.dev/api/people/1/').then(function(response) {
-    response.json().then(function(json) {
-    poemDisplay = JSON.parse(JSON.stringify(json));
+    response.text().then(function(text) {
+    getJson.textContent = text;
 
     });
   });
