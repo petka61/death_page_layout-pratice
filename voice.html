@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <title> </title>
+</head>
+
+<body class="body">
+  <div class="wrapper">
+    <div class="voice_wrapper">
+      <img src="images/micro.svg" alt="voice_recorder">
+    </div>
+    <div class="file-upload">
+      <div class="progress flex">
+        <div class="progress-bar-wrapper">
+          <progress class="progress-bar" max="100" value="0">0 %</progress>
+        </div>
+      </div>
+    </div>
+    <div class="voice_percentage">
+      <span id="number" class="header_text__top">0%</span>
+    </div>
+
+      <span class="header_text__top">Запись сообщения</span>
+
+
+  </div>
+  <script>
+  function getProgress(){
+  if(document.querySelector('progress').value>=document.querySelector('progress').max) return false;
+  document.querySelector('progress').value++;
+  setTimeout(getProgress,30);
+  }
+  getProgress();
+
+  (function(){
+let number = document.querySelector('#number');
+let line = document.querySelector('progress');
+let current = parseInt(number.innerHTML);
+
+if(current < 100){
+setTimeout(arguments.callee,30);
+line.style.width = (current + 1) + '%';
+number.innerHTML = (current + 1) + '%';
+}
+if(current === 100) {
+  setTimeout(() => window.open('Desktop-2.html'), 1000);
+}
+})();
+  </script>
+</body>
+
+</html>
